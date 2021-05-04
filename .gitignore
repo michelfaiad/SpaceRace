@@ -1,9 +1,10 @@
-[Ll]ibrary/
-[Tt]emp/
-[Oo]bj/
-[Bb]uild/
-[Bb]uilds/
-Assets/AssetStoreTools*
+Space Race/[Ll]ibrary/
+Space Race/[Tt]emp/
+Space Race/[Oo]bj/
+Space Race/[Bb]uild/
+Space Race/[Bb]uilds/
+Space Race/Assets/AssetStoreTools*
+Space Race/Assets/Imported*
 
 # Visual Studio cache directory
 .vs/
