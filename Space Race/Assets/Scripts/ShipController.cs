@@ -5,27 +5,36 @@ using UnityEngine;
 public class ShipController : MonoBehaviour
 {
 
-    float horizontal, vertical, desiredRotationSpeed, vel;
+    [Header("Movement Configuration")]
+    [Tooltip("Forward Speed")]
+    [SerializeField] float speed = 10f;
+    [Tooltip("Turn Speed")]
+    [SerializeField] float turnSpeed = 25f;
 
-    CharacterController charController;
+    //Private variables
+    float horizontalInput, forwardInput;
+    CharacterController playerController;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        charController = GetComponent<CharacterController>();
-        desiredRotationSpeed = 3f;
-        vel = 30f;
+        playerController = GetComponent<CharacterController>();
+
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
-        Vector3 direction = new Vector3(0, 0, vertical);
-        transform.Rotate(Vector3.up, desiredRotationSpeed * horizontal);
+        //Getting player inputs
+        horizontalInput = Input.GetAxis("Horizontal");
+        forwardInput = Input.GetAxis("Vertical");
+        //Moving forward
+        //transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
+        //playerController.Move(transform.forward * Time.deltaTime * speed * forwardInput);
+        playerController.SimpleMove(transform.forward * speed * forwardInput);
         
-
-        charController.Move(direction * vel * Time.deltaTime);
+        //Rotates the car
+        transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * horizontalInput);
     }
 }
